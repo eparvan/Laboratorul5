@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Matrice bidimensionala";
+}
+<div class="align-content-center">
+    <h2>Matricea generata</h2>
+</div>
+<hr />
+@{
+    int[,] matrix = ViewBag.Matrix;
+    int max = ViewBag.MaxValue;
+    int min = ViewBag.MinValue;
+}
+<div class="align-content-center">
+    <table class="table-bordered">
+        @for (int i=0;i<matrix.GetLength(0); i++)
+        {
+            <tr>
+                @for (int j=0; j<matrix.GetLength(1); j++)
+                {
+                    int value = matrix[i, j];
+                    bool isMax = (value == max);
+                    bool isMin = (value == min);
+                    <td class="@(isMax? "max":(isMin? "min":""))">                        
+                        @value
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+</div>
